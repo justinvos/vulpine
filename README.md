@@ -1,3 +1,5 @@
+![Vulpine JSON](logo.png)
+
 vulpine-json
 ============
 

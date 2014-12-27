@@ -1,23 +1,14 @@
 package com.github.vulpinejson;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
-import java.util.Stack;
+import java.util.Set;
 
 public class VulpineJSON
 {
-	private String jsonString;
 
-	public VulpineJSON(String jsonString)
+	private static VulpineElement parseLine(String jsonString)
 	{
-		this.jsonString = jsonString;
-	}
-
-	public static HashMap<String, Object> parseLine(String jsonString)
-	{
-		HashMap<String, Object> data = new HashMap<String, Object>();
 
 		if(jsonString.contains(":"))
 		{
@@ -28,15 +19,11 @@ public class VulpineJSON
 
 			if(isString(value))
 			{
-				data.put(trimQuotes(key), trimQuotes(value));
-
-				return data;
+				return new VulpineString(trimQuotes(key), trimQuotes(value));
 			}
-			else if(isHashMap(value))
+			else if(isClass(value))
 			{
-				data.put(trimQuotes(key), parseHashMap(trimQuotes(value)));
-
-				return data;
+				return VulpineObject.parse(jsonString);
 			}
 		}
 		else
@@ -44,13 +31,12 @@ public class VulpineJSON
 			throw new RuntimeException("No ':' seperator in JSON line.");
 		}
 
-		return data;
+		return null;
 	}
 
-	public static HashMap<String, Object> parseHashMap(String value)
+	protected static VulpineClass parseClass(String value)
 	{
-
-		HashMap<String, Object> data = new HashMap<String, Object>();
+		VulpineClass vulpineClass = new VulpineClass();
 
 		int bracketLevel = 0;
 		int parsedIndex = 0;
@@ -67,9 +53,8 @@ public class VulpineJSON
 
 				if(bracketLevel == 1)
 				{
-					String[] empty = new String[1];
-					HashMap<String, Object> vulpineObj = parseLine(value.substring(++parsedIndex, i));
-					data.put(vulpineObj.keySet().toArray(empty)[0], vulpineObj.get(vulpineObj.keySet().toArray(empty)[0]));
+					VulpineElement element = parseLine(value.substring(++parsedIndex, i));
+					vulpineClass.put(element);
 					parsedIndex = i;
 				}
 
@@ -79,28 +64,27 @@ public class VulpineJSON
 			{
 				if(bracketLevel == 1)
 				{
-					String[] empty = new String[1];
-					HashMap<String, Object> vulpineObj = parseLine(value.substring(++parsedIndex, i));
-					data.put(vulpineObj.keySet().toArray(empty)[0], vulpineObj.get(vulpineObj.keySet().toArray(empty)[0]));
+					VulpineElement element = parseLine(value.substring(++parsedIndex, i));
+					vulpineClass.put(element);
 					parsedIndex = i;
 				}
 			}
 		}
 
-		return data;
+		return vulpineClass;
 	}
 
-	public static boolean isString(String str)
+	private static boolean isString(String str)
 	{
 		return (str.startsWith("\"") && str.endsWith("\""));
 	}
 
-	public static boolean isHashMap(String str)
+	private static boolean isClass(String str)
 	{
 		return (str.startsWith("{") && str.endsWith("}"));
 	}
 
-	public static String trimQuotes(String str)
+	private static String trimQuotes(String str)
 	{
 		str.trim();
 
@@ -118,58 +102,20 @@ public class VulpineJSON
 	--- Do not use the main method in your implementation. --
 
 	*/
-	
-
-	public static boolean debug = false;
 
 	public static void main(String[] args)
 	{
-		HashMap<String, Object> str = VulpineJSON.parseLine("\"Name\" : \"Justin\" ");
+		VulpineElement str = VulpineJSON.parseLine("\"Name\" : \"Justin\" ");
 
-		HashMap<String, Object> hashMap = VulpineJSON.parseHashMap("{\"Name\" : \"Justin\", \"Race\" : \"European \"}");
+		VulpineClass vClass = VulpineClass.parse("{\"Name\" : \"Justin\", \"Race\" : \"European\"}");
 
-		//VulpineHashMap map = new VulpineHashMap("MyMap", hashMap);
-
-		System.out.println(hashMap.keySet());
+		System.out.println(vClass.getKeyArray()[1]);
 
 		System.out.println("Name");
-		System.out.println(hashMap.get("Name"));
-		System.out.println(hashMap.get("Race"));
+		System.out.println(vClass.get("Name").getValue());
+		System.out.println(vClass.get("Race").getValue());
 
-		
-
-		/*if(args.length > 0)
-		{
-
-			if(args.length == 2)
-			{
-				if(args[1].equals("debug"))
-				{
-					VulpineJSON.debug = true;
-					System.out.println("DEBUG");
-				}
-			}
-
-			log("VulpineJSON");
-
-			
-			log(args[0]);
-
-			//VulpineJSON vulpine = new VulpineJSON(new File(args[0]));
-			//VulpineJSON vulpine = new VulpineJSON("{name:justin}");
-
-
-			log("JSON STR: " + vulpine.jsonString);
-
-			log("Loaded");
-
-			log(vulpine.get("name"));
-
-			//HashMap<String, Object> address = (HashMap<String, Object>)vulpine.get("address");
-
-			//log(address.get("city"));
-	
-		}
-		*/
+		System.out.println();
+		System.out.println(vClass.encode());
 	}
 }
