@@ -1,9 +1,5 @@
 package com.github.vulpinejson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Set;
-
 public class VulpineObject extends VulpineElement
 {
 	private VulpineClass vulpineClass;
@@ -39,5 +35,23 @@ public class VulpineObject extends VulpineElement
 		{
 			throw new RuntimeException("No ':' seperator in JSON line.");
 		}
+	}
+
+	public static boolean isVulpineObject(String jsonStr)
+	{
+		if(jsonStr.contains(":"))
+		{
+			String[] components = jsonStr.split(":", 2);
+
+			String key = components[0].trim();
+			String value = components[1].trim();
+
+			if(value.startsWith("{") && value.endsWith("}"))
+			{
+				return true;
+			}
+		}
+		
+		return false;
 	}
 }

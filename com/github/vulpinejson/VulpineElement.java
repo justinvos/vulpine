@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class VulpineElement
 {
-
 	private String key;
 	private Object value;
 
