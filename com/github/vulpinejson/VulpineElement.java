@@ -5,27 +5,57 @@ import java.util.Set;
 
 public class VulpineElement
 {
-	private String key;
-	private Object value;
+	private JSONString key;
+	private JSONType value;
 
-	protected VulpineElement(String key, Object value)
+	protected VulpineElement(JSONString key, JSONType value)
 	{
 		this.key = key;
 		this.value = value;
 	}
 
-	protected String getKey()
+	protected JSONString getKey()
 	{
 		return this.key;
 	}
 
-	protected Object getValue()
+	protected JSONType getValue()
 	{
 		return this.value;
 	}
 
 	public String encode()
 	{
-		return "\"" + key + "\" : " + value.toString();
+		return key.encode() + " : " + value.encode();
+	}
+
+	public static VulpineElement parse(String jsonString)
+	{
+		if(jsonString.contains(":"))
+		{
+			String[] components = jsonString.split(":", 2);
+
+			String key = components[0].trim();
+			String value = components[1].trim();
+
+			JSONString keyJson = JSONString.parse(key);
+
+			if(JSONString.isJSONString(value))
+			{
+				return new VulpineElement(keyJson, JSONString.parse(value));
+			}
+			else if(VulpineJSON.isClass(value))
+			{
+				return new VulpineElement(keyJson, JSONObject.parse(value));
+			}
+			else
+			{
+				throw new RuntimeException("Unknown JSON value.");
+			}
+		}
+		else
+		{
+			throw new RuntimeException("No ':' seperator in JSON line.");
+		}
 	}
 }
