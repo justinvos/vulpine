@@ -122,4 +122,11 @@ public class JSONObject extends JSONType
 
 		return jsonObj;
 	}
+
+	public static boolean isJSONObject(String json)
+	{
+		json = json.trim();
+
+		return (json.startsWith("{") && json.endsWith("}"));
+	}
 }

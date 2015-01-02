@@ -48,14 +48,18 @@ public class VulpineElement
 			{
 				return new VulpineElement(keyJson, JSONObject.parse(value));
 			}
+			else if(JSONBoolean.isJSONBoolean(value))
+			{
+				return new VulpineElement(keyJson, JSONBoolean.parse(value));
+			}
 			else
 			{
-				throw new RuntimeException("Unknown JSON value.");
+				throw new InvalidJSONException("Unknown or incorrect JSON type");
 			}
 		}
 		else
 		{
-			throw new RuntimeException("No ':' seperator in JSON line.");
+			throw new InvalidJSONException("Missing seperator in JSON element");
 		}
 	}
 }

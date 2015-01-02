@@ -45,9 +45,9 @@ public class JSONString extends JSONType
 
 	public static String trimQuotes(String str)
 	{
-		str.trim();
+		str = str.trim();
 
-		if(str.startsWith("\"") && str.endsWith("\""))
+		if(isJSONString(str))
 		{
 			str = str.substring(1, str.length() - 1);
 		}
@@ -56,6 +56,7 @@ public class JSONString extends JSONType
 
 	public static boolean isJSONString(String str)
 	{
+		str = str.trim();
 		return (str.startsWith("\"") && str.endsWith("\""));
 	}
 }

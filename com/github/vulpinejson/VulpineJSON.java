@@ -46,8 +46,19 @@ public class VulpineJSON
 
 		JSONObject jsonObj2 = new JSONObject();
 
-		jsonObj2.put(new VulpineElement(new JSONString("Job"), new JSONObject()));
+		jsonObj2.put(new VulpineElement(new JSONString("Male"), new JSONBoolean(true)));
 
-		System.out.println(jsonObj2.encode());
+		String jsonCode = jsonObj2.encode();
+
+		System.out.println(jsonCode);
+
+		JSONObject jsonObj3 = JSONObject.parse(jsonCode);
+
+		System.out.println(jsonObj3);
+
+		System.out.println();
+
+		//JSONArray json4 = JSONArray.parse("[1, 2, 3, 4, 5]");
+		//System.out.println(json4.encode());
 	}
 } 
