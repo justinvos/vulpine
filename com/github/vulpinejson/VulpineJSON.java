@@ -41,6 +41,10 @@ public class VulpineJSON
 
 		System.out.println();
 
+		JSONNumber jsonObj4 = JSONNumber.parse("3.14");
+
+		System.out.println(jsonObj4.encode());
+
 		//JSONArray json4 = JSONArray.parse("[1, 2, 3, 4, 5]");
 		//System.out.println(json4.encode());
 	}

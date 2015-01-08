@@ -83,8 +83,20 @@ public class JSONObject extends JSONType
 		return strArray;
 	}
 
+
+	/**
+	* Parses JSON string format into a JSONObject.
+	*
+	* @return	a decoded JSONObject object of the given JSON string
+	* @throws	InvalidJSONException if the JSON Object is in the incorrect format
+	*/
 	public static JSONObject parse(String value)
 	{
+		if(!JSONObject.isJSONObject(value))
+		{
+			throw new InvalidJSONException("Invalid JSONObject format");
+		}
+
 		JSONObject jsonObj = new JSONObject();
 
 		int bracketLevel = 0;

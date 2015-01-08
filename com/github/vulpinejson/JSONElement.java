@@ -51,7 +51,7 @@ public class JSONElement
 	/**
 	* Parses JSON string format into a JSONElement.
 	*
-	* @return	a JSON string representation of the JSONElement object
+	* @return	a decoded JSONElement object of the given JSON string
 	* @throws	InvalidJSONException if the seperator of the JSON element is missing
 	*/
 	public static JSONElement parse(String jsonString)

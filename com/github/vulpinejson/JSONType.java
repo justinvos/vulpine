@@ -32,11 +32,15 @@ public abstract class JSONType
 	/**
 	* Parses a JSON string into a JSONType
 	*
-	* @return	a JSONType object of the JSON string representation
+	* @return	a decoded JSONType object of the given JSON string
 	*/
 	public static JSONType parse(String value)
 	{
-		if(JSONString.isJSONString(value))
+		if(JSONNumber.isJSONNumber(value))
+		{
+			return JSONNumber.parse(value);
+		}
+		else if(JSONString.isJSONString(value))
 		{
 			return JSONString.parse(value);
 		}
