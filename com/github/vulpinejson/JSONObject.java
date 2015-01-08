@@ -4,19 +4,19 @@ import java.util.ArrayList;
 
 public class JSONObject extends JSONType
 {
-	private ArrayList<VulpineElement> elementList;
+	private ArrayList<JSONElement> elementList;
 
 	public JSONObject()
 	{
-		this.elementList = new ArrayList<VulpineElement>();
+		this.elementList = new ArrayList<JSONElement>();
 	}
 
-	public JSONObject(ArrayList<VulpineElement> elementList)
+	public JSONObject(ArrayList<JSONElement> elementList)
 	{
 		this.elementList = elementList;
 	}
 
-	public ArrayList<VulpineElement> get()
+	public ArrayList<JSONElement> get()
 	{
 		return elementList;
 	}
@@ -39,7 +39,7 @@ public class JSONObject extends JSONType
 		return jsonStr + "}";
 	}
 
-	public VulpineElement get(String key)
+	public JSONElement get(String key)
 	{
 		for(int i = 0; i < elementList.size(); i++)
 		{
@@ -52,7 +52,7 @@ public class JSONObject extends JSONType
 		return null;
 	}
 
-	public boolean contains(VulpineElement element)
+	public boolean contains(JSONElement element)
 	{
 		for(int i = 0; i < elementList.size(); i++)
 		{
@@ -64,7 +64,7 @@ public class JSONObject extends JSONType
 		return false;
 	}
 
-	public void put(VulpineElement element)
+	public void put(JSONElement element)
 	{
 		if(!contains(element))
 		{
@@ -102,7 +102,7 @@ public class JSONObject extends JSONType
 
 				if(bracketLevel == 1)
 				{
-					VulpineElement element = VulpineElement.parse(value.substring(++parsedIndex, i));
+					JSONElement element = JSONElement.parse(value.substring(++parsedIndex, i));
 					jsonObj.put(element);
 					parsedIndex = i;
 				}
@@ -113,7 +113,7 @@ public class JSONObject extends JSONType
 			{
 				if(bracketLevel == 1)
 				{
-					VulpineElement element = VulpineElement.parse(value.substring(++parsedIndex, i));
+					JSONElement element = JSONElement.parse(value.substring(++parsedIndex, i));
 					jsonObj.put(element);
 					parsedIndex = i;
 				}

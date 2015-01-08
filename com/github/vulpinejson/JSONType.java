@@ -6,7 +6,7 @@ public abstract class JSONType
 	/**
 	* The base method for encoding Java JSON objects into JSON strings.
 	*
-	* @return	a String in JSON format.
+	* @return	a JSON string representation of the JSONType object
 	*/
 	public abstract String encode();
 	

@@ -2,18 +2,6 @@ package com.github.vulpinejson;
 
 public class VulpineJSON
 {
-
-	protected static String trimQuotes(String str)
-	{
-		str.trim();
-
-		if(str.startsWith("\"") && str.endsWith("\""))
-		{
-			str = str.substring(1, str.length() - 1);
-		}
-		return str;
-	}
-
 	/*
 
 	The main method is used purely for debuging test cases.
@@ -24,7 +12,7 @@ public class VulpineJSON
 
 	public static void main(String[] args)
 	{
-		VulpineElement str = VulpineElement.parse("\"Name\" : \"Justin\" ");
+		JSONElement str = JSONElement.parse("\"Name\" : \"Justin\" ");
 
 		JSONObject jsonObj = JSONObject.parse("{\"Name\" : \"Justin\", \"Race\" : \"European\"}");
 
@@ -41,7 +29,7 @@ public class VulpineJSON
 
 		JSONObject jsonObj2 = new JSONObject();
 
-		jsonObj2.put(new VulpineElement(new JSONString("Male"), new JSONBoolean(true)));
+		jsonObj2.put(new JSONElement(new JSONString("Male"), new JSONBoolean(true)));
 
 		String jsonCode = jsonObj2.encode();
 

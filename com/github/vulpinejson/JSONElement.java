@@ -3,33 +3,58 @@ package com.github.vulpinejson;
 import java.util.HashMap;
 import java.util.Set;
 
-public class VulpineElement
+public class JSONElement
 {
 	private JSONString key;
 	private JSONType value;
 
-	protected VulpineElement(JSONString key, JSONType value)
+	protected JSONElement(JSONString key, JSONType value)
 	{
 		this.key = key;
 		this.value = value;
 	}
 
+
+	/**
+	* Gets the key of this JSON Element.
+	*
+	* @return	the JSONString key of this JSON Element
+	*/
 	protected JSONString getKey()
 	{
 		return this.key;
 	}
 
+
+	/**
+	* Gets the value of this JSON Element.
+	*
+	* @return	the JSONType value of this JSON Element
+	*/
 	protected JSONType getValue()
 	{
 		return this.value;
 	}
 
+
+	/**
+	* Encodes the JSON Element into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONElement object
+	*/
 	public String encode()
 	{
 		return key.encode() + " : " + value.encode();
 	}
 
-	public static VulpineElement parse(String jsonString)
+
+	/**
+	* Parses JSON string format into a JSONElement.
+	*
+	* @return	a JSON string representation of the JSONElement object
+	* @throws	InvalidJSONException if the seperator of the JSON element is missing
+	*/
+	public static JSONElement parse(String jsonString)
 	{
 		if(jsonString.contains(":"))
 		{
@@ -42,7 +67,7 @@ public class VulpineElement
 
 			JSONType valueJson = JSONType.parse(value);
 
-			return new VulpineElement(keyJson, valueJson);
+			return new JSONElement(keyJson, valueJson);
 		}
 		else
 		{
