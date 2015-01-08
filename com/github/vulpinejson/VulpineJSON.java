@@ -3,11 +3,6 @@ package com.github.vulpinejson;
 public class VulpineJSON
 {
 
-	protected static boolean isClass(String str)
-	{
-		return (str.startsWith("{") && str.endsWith("}"));
-	}
-
 	protected static String trimQuotes(String str)
 	{
 		str.trim();

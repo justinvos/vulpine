@@ -40,22 +40,9 @@ public class VulpineElement
 
 			JSONString keyJson = JSONString.parse(key);
 
-			if(JSONString.isJSONString(value))
-			{
-				return new VulpineElement(keyJson, JSONString.parse(value));
-			}
-			else if(VulpineJSON.isClass(value))
-			{
-				return new VulpineElement(keyJson, JSONObject.parse(value));
-			}
-			else if(JSONBoolean.isJSONBoolean(value))
-			{
-				return new VulpineElement(keyJson, JSONBoolean.parse(value));
-			}
-			else
-			{
-				throw new InvalidJSONException("Unknown or incorrect JSON type");
-			}
+			JSONType valueJson = JSONType.parse(value);
+
+			return new VulpineElement(keyJson, valueJson);
 		}
 		else
 		{

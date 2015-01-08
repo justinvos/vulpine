@@ -24,4 +24,11 @@ public class JSONNull extends JSONType
 		}
 		throw new InvalidJSONException("Invalid JSON for a Null type");
 	}
+
+	public static boolean isJSONNull(String json)
+	{
+		json = json.trim();
+
+		return json.equals("null");
+	}
 }
