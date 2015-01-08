@@ -1,5 +1,7 @@
 package com.github.vulpinejson;
 
+import java.io.File;
+
 public class VulpineJSON
 {
 	/*
@@ -44,6 +46,22 @@ public class VulpineJSON
 		JSONNumber jsonObj4 = JSONNumber.parse("3.14");
 
 		System.out.println(jsonObj4.encode());
+
+		System.out.println();
+
+		VulpineWriter writer = new VulpineWriter(new File("debug\\Company.json"));
+
+		writer.beginObject();
+
+		writer.printKey("Member");
+		writer.printType(jsonObj);
+
+		writer.printKey("Number");
+		writer.printType(jsonObj4);
+
+		writer.endObject();
+
+		writer.flush();
 
 		//JSONArray json4 = JSONArray.parse("[1, 2, 3, 4, 5]");
 		//System.out.println(json4.encode());

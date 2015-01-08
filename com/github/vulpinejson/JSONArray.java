@@ -48,6 +48,12 @@ public class JSONArray extends JSONType
 		return false;
 	}
 
+
+	/**
+	* Encodes the JSON Array into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONArray object
+	*/
 	public String encode()
 	{
 		String jsonStr = "[";
@@ -66,6 +72,12 @@ public class JSONArray extends JSONType
 		return jsonStr + "]";
 	}
 
+
+	/**
+	* Parses a JSON string into a JSON Array
+	*
+	* @return	a decoded JSONArray object of the given JSON string
+	*/
 	public static JSONArray parse(String json)
 	{
 		JSONArray jsonArr = new JSONArray();

@@ -19,6 +19,11 @@ public class JSONBoolean extends JSONType
 		return this.value;
 	}
 
+	/**
+	* Encodes the JSON Boolean into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONBoolean object
+	*/
 	public String encode()
 	{
 		if(this.value)
@@ -29,6 +34,11 @@ public class JSONBoolean extends JSONType
 		return "false";
 	}
 
+	/**
+	* Parses a JSON string into a JSON Boolean
+	*
+	* @return	a decoded JSONBoolean object of the given JSON string
+	*/
 	public static JSONBoolean parse(String json)
 	{
 		json = json.trim();

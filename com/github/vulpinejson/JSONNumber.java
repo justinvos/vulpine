@@ -14,11 +14,21 @@ public class JSONNumber extends JSONType
 		return this.value;
 	}
 
+	/**
+	* Encodes the JSON Number into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONNumber object
+	*/
 	public String encode()
 	{
 		return new Double(value).toString();
 	}
 
+	/**
+	* Parses a JSON string into a JSONNumber
+	*
+	* @return	a decoded JSONNumber object of the given JSON string
+	*/
 	public static JSONNumber parse(String json)
 	{
 		if(!isJSONNumber(json))

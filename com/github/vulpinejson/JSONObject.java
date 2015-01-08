@@ -21,24 +21,6 @@ public class JSONObject extends JSONType
 		return elementList;
 	}
 
-	public String encode()
-	{
-		String jsonStr = "{";
-
-		for(int i = 0; i < elementList.size(); i++)
-		{
-			jsonStr = jsonStr + elementList.get(i).encode() + ", ";
-		}
-
-		if(jsonStr.length() > 1)
-		{
-			jsonStr = jsonStr.substring(0, jsonStr.length() - 2);
-		}
-		
-
-		return jsonStr + "}";
-	}
-
 	public JSONElement get(String key)
 	{
 		for(int i = 0; i < elementList.size(); i++)
@@ -83,9 +65,31 @@ public class JSONObject extends JSONType
 		return strArray;
 	}
 
+	/**
+	* Encodes the JSON Object into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONObject object
+	*/
+	public String encode()
+	{
+		String jsonStr = "{";
+
+		for(int i = 0; i < elementList.size(); i++)
+		{
+			jsonStr = jsonStr + elementList.get(i).encode() + ", ";
+		}
+
+		if(jsonStr.length() > 1)
+		{
+			jsonStr = jsonStr.substring(0, jsonStr.length() - 2);
+		}
+		
+
+		return jsonStr + "}";
+	}
 
 	/**
-	* Parses JSON string format into a JSONObject.
+	* Parses JSON string format into a JSON Object.
 	*
 	* @return	a decoded JSONObject object of the given JSON string
 	* @throws	InvalidJSONException if the JSON Object is in the incorrect format

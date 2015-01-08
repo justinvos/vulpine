@@ -11,11 +11,21 @@ public class JSONNull extends JSONType
 		return null;
 	}
 
+	/**
+	* Encodes the JSON Null into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONNull object
+	*/
 	public String encode()
 	{
 		return "null";
 	}
 
+	/**
+	* Parses a JSON string into a JSON Null
+	*
+	* @return	a decoded JSONNull object of the given JSON string
+	*/
 	public static JSONNull parse(String json)
 	{
 		if(json.trim().equals("null"))

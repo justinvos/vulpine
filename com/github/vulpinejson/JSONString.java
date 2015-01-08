@@ -25,11 +25,21 @@ public class JSONString extends JSONType
 		return this.value;
 	}
 
+	/**
+	* Encodes the JSON String into JSON string format.
+	*
+	* @return	a JSON string representation of the JSONString object
+	*/
 	public String encode()
 	{
 		return "\"" + this.value + "\"";
 	}
 
+	/**
+	* Parses a JSON string into a JSON String
+	*
+	* @return	a decoded JSONString object of the given JSON string
+	*/
 	public static JSONString parse(String jsonStr)
 	{
 		String value = jsonStr.trim();

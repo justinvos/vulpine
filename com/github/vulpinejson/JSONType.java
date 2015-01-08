@@ -4,13 +4,6 @@ package com.github.vulpinejson;
 public abstract class JSONType
 {
 	/**
-	* The base method for encoding Java JSON objects into JSON strings.
-	*
-	* @return	a JSON string representation of the JSONType object
-	*/
-	public abstract String encode();
-	
-	/**
 	* The base method for returning an instance of the content in the JSONType.
 	*
 	* @return	an instance of the content in the JSONType
@@ -30,7 +23,14 @@ public abstract class JSONType
 
 
 	/**
-	* Parses a JSON string into a JSONType
+	* The base method for encoding Java JSON objects into JSON strings.
+	*
+	* @return	a JSON string representation of the JSONType object
+	*/
+	public abstract String encode();
+
+	/**
+	* Parses a JSON string into a JSON Type
 	*
 	* @return	a decoded JSONType object of the given JSON string
 	*/
