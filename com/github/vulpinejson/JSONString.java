@@ -42,15 +42,16 @@ public class JSONString extends JSONType
 	*/
 	public static JSONString parse(String jsonStr)
 	{
-		String value = jsonStr.trim();
-
-		if(JSONString.isJSONString(jsonStr))
+		if(!JSONString.isJSONString(jsonStr))
 		{
-			value = value.substring(1, value.length() - 1);
-			return new JSONString(value);
+			throw new InvalidJSONException("Invalid JSONString format");
 		}
 
-		throw new RuntimeException("Invalid Format");
+		String value = jsonStr.trim();
+
+		value = value.substring(1, value.length() - 1);
+		return new JSONString(value);
+		
 	}
 
 	public static String trimQuotes(String str)

@@ -63,6 +63,17 @@ public class VulpineJSON
 
 		writer.flush();
 
+		VulpineReader reader = new VulpineReader(new File("debug\\Company.json"));
+
+		JSONObject jsonObj5 = reader.read();
+
+		System.out.println(jsonObj5.encode());
+
+		VulpineWriter writer2 = new VulpineWriter(new File("debug\\Company2.json"));
+
+		writer2.printType(jsonObj5);
+		writer2.flush();
+
 		//JSONArray json4 = JSONArray.parse("[1, 2, 3, 4, 5]");
 		//System.out.println(json4.encode());
 	}
