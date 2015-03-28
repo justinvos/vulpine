@@ -1,4 +1,4 @@
 @echo off
-javac com\github\vulpine\*.java
-javac com\github\vulpine\json\*.java
+javac github\vulpine\*.java
+javac github\vulpine\json\*.java
 pause

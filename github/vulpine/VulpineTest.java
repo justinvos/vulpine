@@ -1,5 +1,8 @@
 package github.vulpine;
 
+import github.vulpine.binary.Bit;
+import github.vulpine.binary.Octet;
+
 import github.vulpine.json.JSONBoolean;
 import github.vulpine.json.JSONElement;
 import github.vulpine.json.JSONNumber;
@@ -25,10 +28,20 @@ public class VulpineTest
 
 	public static void main(String[] args)
 	{
+		Bit bit = new Bit(true);
+
+		test("BIN #1.1", "1", bit.toString());
+
+		Octet octet = new Octet((byte)28);
+
+		test("BIN #1.2", "00011100", octet.toString());
+
+		System.out.println();
+
+
 		JSONElement str = JSONElement.parse("\"Name\" : \"Justin\" ");
 
 		JSONObject jsonObj = JSONObject.parse("{\"Name\" : \"Justin\", \"Race\" : \"Kiwi\"}");
-
 
 		test("JSON #1.1", "Race", jsonObj.getKeyArray()[1]);
 		test("JSON #1.2", "Justin", jsonObj.get("Name").getValue().toString());

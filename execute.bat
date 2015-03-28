@@ -1,3 +1,3 @@
 @echo off
-java com.github.vulpine.VulpineJSON
+java github.vulpine.VulpineTest
 pause

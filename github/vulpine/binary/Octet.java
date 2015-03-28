@@ -1,9 +1,20 @@
 package github.vulpine.binary;
 
+/**
+* Class Octet represents an array of Bits of length 8.
+* @see Bit
+*/
 public class Octet
 {
   private Bit[] bitArray;
 
+
+  /**
+  * Constructs a Octet object using a Bit array.
+  *
+  * @param	A Bit array of length 8.
+  * @throws IllegalArgumentException if the Bit array is not of length 8.
+  */
   public Octet(Bit[] bitArray)
   {
     if(bitArray.length != 8)
@@ -13,6 +24,11 @@ public class Octet
     this.bitArray = bitArray;
   }
 
+  /**
+  * Constructs a Octet object by converting from a decimal byte value.
+  *
+  * @param	A byte value.
+  */
   public Octet(byte value)
   {
     bitArray = new Bit[8];
@@ -31,6 +47,11 @@ public class Octet
     }
   }
 
+  /**
+  * Creates a string of 0 and 1 digits representing this Octet.
+  *
+  * @return	a string representation of this Octet object.
+  */
   public String toString()
   {
     String str = "";
