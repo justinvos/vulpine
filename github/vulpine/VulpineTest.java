@@ -3,6 +3,8 @@ package github.vulpine;
 import github.vulpine.binary.Bit;
 import github.vulpine.binary.Octet;
 
+import github.vulpine.hex.Hexadecimal;
+
 import github.vulpine.json.JSONBoolean;
 import github.vulpine.json.JSONElement;
 import github.vulpine.json.JSONNumber;
@@ -38,6 +40,11 @@ public class VulpineTest
 
 		System.out.println();
 
+		Hexadecimal hex1 = new Hexadecimal((byte)34);
+
+		test("HEX #1.1", "22", hex1.toString());
+
+		System.out.println();
 
 		JSONElement str = JSONElement.parse("\"Name\" : \"Justin\" ");
 
