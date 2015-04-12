@@ -13,10 +13,11 @@ import github.vulpine.json.JSONString;
 import github.vulpine.json.VulpineWriter;
 import github.vulpine.json.VulpineReader;
 
+import github.vulpine.xml.XMLStartTag;
 import github.vulpine.xml.XMLTag;
-import github.vulpine.xml.XMLAttributeTag;
 
 import java.io.File;
+import java.util.HashMap;
 
 public class VulpineTest
 {
@@ -109,10 +110,13 @@ public class VulpineTest
 		test("XML #1.1", "<p>", tag1.toString());
 
 		XMLTag tag2 = XMLTag.parse("<a href=\"google.com\">");
-		test("XML #2.1", "<a href=\"google.com\">", tag2.toString());
+		test("XML #2.1", "<a>", tag2.toString());
 
-		XMLAttributeTag tag3 = new XMLAttributeTag("a");
-		test("XML #3.1", "<a>", tag3.toString());
+		HashMap<String, Object> map3 = new HashMap<String, Object>();
+		map3.put("href", "google.com");
+
+		XMLStartTag tag3 = new XMLStartTag("a", map3);
+		test("XML #3.1", "<a href=\"google.com\">", tag3.toString());
 	}
 
 	public static void test(String testName, Object expectedOutput, Object actualOutput)
