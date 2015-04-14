@@ -21,12 +21,24 @@ public class XMLStartTag extends XMLTag
   {
     if(tag.startsWith("<") && tag.endsWith(">"))
     {
-      return null;
+      if(tag.contains(" "))
+      {
+        return new XMLStartTag(tag.subtring(1, tag.indexOf(" ")), parseAttributes(tag.indexOf(" ") + 1, tag.indexOf(">")));
+      }
+      else
+      {
+        return new XMLStartTag(tag.substring(1, tag.indexOf(">")));
+      }
     }
     else
     {
       throw new InvalidXMLException("Tag does not start and end with angle brackets (</>)");
     }
+  }
+
+  private static HashMap<String, Object> parseAttributes(String attributeText)
+  {
+    return new HashMap<String, Object>();
   }
 
   public Object valueOf(String key)
