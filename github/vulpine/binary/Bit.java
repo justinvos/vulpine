@@ -43,12 +43,22 @@ public class Bit
   }
 
   /**
-  * Creates a string representation of the value of this Bit. Will have the value of 0 or 1.
+  * Creates a string representation of the value of this Bit. Will have the value of "1" or "0".
   *
   * @return	a string representation of this Bit object.
   */
   public String toString()
   {
     return value ? "1" : "0";
+  }
+
+  /**
+  * Creates a boolean representation of the value of this bit. Will have the value of true or false.
+  *
+  * @return	a booleans representation of this Bit object.
+  */
+  public boolean toBoolean()
+  {
+    return value;
   }
 }

@@ -91,4 +91,22 @@ public class Octet
     }
     return str;
   }
+
+
+  /**
+  * Creates byte number representation of this Octet.
+  *
+  * @return	a byte representation of this Octet object.
+  */
+  public byte toByte()
+  {
+    byte sum = 0;
+
+    for(int i = 0; i < 8; i++)
+    {
+      sum = sum + (bitArray[i] * Math.pow(2, i));
+    }
+
+    return sum;
+  }
 }
