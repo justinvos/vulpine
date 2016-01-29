@@ -13,8 +13,8 @@ import github.vulpine.json.JSONString;
 import github.vulpine.json.VulpineWriter;
 import github.vulpine.json.VulpineReader;
 
-import github.vulpine.xml.XMLStartTag;
-import github.vulpine.xml.XMLTag;
+//import github.vulpine.xml.XMLStartTag;
+//import github.vulpine.xml.XMLTag;
 
 import java.io.File;
 import java.util.HashMap;
@@ -106,6 +106,8 @@ public class VulpineTest
 		//JSONArray json4 = JSONArray.parse("[1, 2, 3, 4, 5]");
 		//System.out.println(json4.encode());
 		*/
+
+		/*
 		XMLTag tag1 = new XMLTag("p");
 		test("XML #1.1", "<p>", tag1.toString());
 
@@ -117,6 +119,7 @@ public class VulpineTest
 
 		XMLStartTag tag3 = new XMLStartTag("a", map3);
 		test("XML #3.1", "<a href=\"google.com\">", tag3.toString());
+		*/
 	}
 
 	public static void test(String testName, Object expectedOutput, Object actualOutput)
