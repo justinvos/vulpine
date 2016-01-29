@@ -48,6 +48,36 @@ public class Octet
   }
 
   /**
+  * Constructs a Bit object using a string of up to 8 binary digits ("0"s or "1"s).
+  *
+  * @param A string of up to eight binary digit ("0"s or "1"s).
+  */
+  public Octet(String value)
+  {
+    if(value.length() <= 8)
+    {
+      bitArray = new Bit[8];
+
+      for(int i = 0; i < 8; i++)
+      {
+        if(i < (8 - value.length()))
+        {
+          bitArray[i] = new Bit("0");
+        }
+        else
+        {
+          bitArray[i] = new Bit(value.substring(i, i + 1));
+
+        }
+      }
+    }
+    else
+    {
+      throw new IllegalArgumentException("The given binary string is longer than eight digits.");
+    }
+  }
+
+  /**
   * Creates a string of 0 and 1 digits representing this Octet.
   *
   * @return	a string representation of this Octet object.

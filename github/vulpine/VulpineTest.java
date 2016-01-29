@@ -39,6 +39,10 @@ public class VulpineTest
 
 		test("BIN #1.2", "00011100", octet.toString());
 
+		test("BIN #1.3", "1", new Bit("1").toString());
+
+		test("BIN #1.4", "00011100", new Octet("00011100").toString());
+
 		System.out.println();
 
 		Hexadecimal hex1 = new Hexadecimal((byte)34);
@@ -122,7 +126,7 @@ public class VulpineTest
 		*/
 	}
 
-	public static void test(String testName, Object expectedOutput, Object actualOutput)
+	public static void test(String testName, String expectedOutput, String actualOutput)
 	{
 		if(expectedOutput.equals(actualOutput))
 		{
