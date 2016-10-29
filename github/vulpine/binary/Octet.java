@@ -104,7 +104,7 @@ public class Octet
 
     for(int i = 0; i < 8; i++)
     {
-      sum = sum + (bitArray[i] * Math.pow(2, i));
+      sum = (byte)(sum + (bitArray[i].toByte() * (byte)Math.pow(2, i)));
     }
 
     return sum;

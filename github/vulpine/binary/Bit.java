@@ -55,10 +55,30 @@ public class Bit
   /**
   * Creates a boolean representation of the value of this bit. Will have the value of true or false.
   *
-  * @return	a booleans representation of this Bit object.
+  * @return	a boolean representation of this Bit object.
   */
   public boolean toBoolean()
   {
     return value;
+  }
+
+  /**
+  * Creates a primitive integer representation of the value of this bit. Will have the value of 1 or 0.
+  *
+  * @return	an int representation of this Bit object.
+  */
+  public int toInteger()
+  {
+    return value ? 1 : 0;
+  }
+
+  /**
+  * Creates a primitive byte representation of the value of this bit. Will have the value of 1 or 0.
+  *
+  * @return	an byte representation of this Bit object.
+  */
+  public byte toByte()
+  {
+    return value ? (byte)1 : (byte)0;
   }
 }

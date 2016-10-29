@@ -12,6 +12,7 @@ import github.vulpine.json.JSONObject;
 import github.vulpine.json.JSONString;
 import github.vulpine.json.VulpineWriter;
 import github.vulpine.json.VulpineReader;
+import github.vulpine.csv.CSV;
 
 //import github.vulpine.xml.XMLStartTag;
 //import github.vulpine.xml.XMLTag;
@@ -124,6 +125,10 @@ public class VulpineTest
 		XMLStartTag tag3 = new XMLStartTag("a", map3);
 		test("XML #3.1", "<a href=\"google.com\">", tag3.toString());
 		*/
+
+		CSV csv = new CSV();
+
+		test("CSV #1", "", csv.toString());
 	}
 
 	public static void test(String testName, String expectedOutput, String actualOutput)
